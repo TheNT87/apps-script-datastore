@@ -4,7 +4,7 @@
  * @return {Object} If successful, the response body contains an instance of Operation.
  */
 function getOperations() {
-  let fetch = UrlFetchApp.fetch(`${ENDPOINT}${this.project_id}/operations/`,{
+  let fetch = UrlFetchApp.fetch(`${ENDPOINT}${this.project_id}/operations`,{
     method: 'get', headers: headers_()
   });
   return JSON.parse(fetch.getContentText());
@@ -18,7 +18,7 @@ function getOperations() {
  */
 function listOperations(query={}){
   const queryString = Object.keys(query).map( k => `${k}=${query[k]}`).join('&');
-  let fetch = UrlFetchApp.fetch(`${ENDPOINT}${this.project_id}/operations/?${queryString}`,{
+  let fetch = UrlFetchApp.fetch(`${ENDPOINT}${this.project_id}/operations?${queryString}`,{
     method: 'get', headers: headers_()
   });
   return JSON.parse(fetch.getContentText());
@@ -33,7 +33,7 @@ function listOperations(query={}){
  * @return {void} If successful, the response body is empty.
  */
 function cancelOperations(){
-  let fetch = UrlFetchApp.fetch(`${ENDPOINT}${this.project_id}/operations/:cancel`,{
+  let fetch = UrlFetchApp.fetch(`${ENDPOINT}${this.project_id}/operations:cancel`,{
     method: 'post', headers: headers_()
   });
   return JSON.parse(fetch.getContentText());
@@ -46,7 +46,7 @@ function cancelOperations(){
  * @return {void} If successful, the response body is empty.
  */
 function deleteOperations(){
-  let fetch = UrlFetchApp.fetch(`${ENDPOINT}${this.project_id}/operations/`,{
+  let fetch = UrlFetchApp.fetch(`${ENDPOINT}${this.project_id}/operations`,{
     method: 'delete', headers: headers_()
   });
   return JSON.parse(fetch.getContentText());
