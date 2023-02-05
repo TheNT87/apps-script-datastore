@@ -16,7 +16,7 @@ const endpoint_ = (method) => {
 const headers_ = () => {
   if( !this.token ){ throw 'Please initialize this API with your Oauth token'; }
   return {
-    Authorization: 'Bearer: '.concat(this.token),
+    Authorization: 'Bearer '.concat(this.token),
     Accept: 'application/json'
   }
 }
